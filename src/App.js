@@ -1,29 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import List from "./List";
+import TodoForm from "./TodoForm";
 
 class App extends React.Component {
   state = {
-    items: [
-      {id:1, name:'Apple', complete:true},
-      {id:2, name:'Cereal', complete: false},
-      {id:3, name:'Milk', complete: false},
-      {id:4, name:'Soap', complete: false},
+    todos: [
+      { id: 1, name: "Learn React", complete: true },
+      { id: 2, name: "Learn Cooking", complete: false },
+      { id: 3, name: "Learn Signing", complete: false },
     ],
   };
 
-  renderItems = () => {
-    const { items } = this.state;
-    return items.map((item) => {
-      return <div key={item.id}>{item.name}</div>;
+  handleClick = (id) => {
+    console.log(id);
+    const { todos } = this.state;
+
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          complete: !todo.complete,
+        };
+      }
+      return todo;
+    });
+
+    this.setState({
+      todos: newTodos,
     });
   };
 
+  addItem = (item) => {
+    const { todos } = this.state;
+    const newTodo = { id: Math.random(), name: item, complete: false };
+    this.setState({
+      todos: [...todos, newTodo],
+    });
+  };
   render() {
-    return(
+    return (
       <>
-      <h1>Grocery List</h1>
-      {this.renderItems()}
+        <List todos={this.state.todos} todoClick={this.handleClick} />
+        <hr />
+        <TodoForm add={this.addItem} />
       </>
     );
   }
