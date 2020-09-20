@@ -1,12 +1,12 @@
 import React from "react";
 
-const Todo = (props) => {
+const Item = (props) => {
   return (
     <li
       style={
-        props.complete ? { ...styles.todo, ...styles.complete } : styles.todo
+        props.complete ? { ...styles.item, ...styles.complete } : styles.item
       }
-      onClick={() => props.todoClick(props.id)}
+      onClick={() => props.itemClick(props.id)}
     >
       {props.name}
     </li>
@@ -14,9 +14,9 @@ const Todo = (props) => {
 };
 
 const styles = {
-  todo: { cursor: "pointer", color: "#333" },
+  item: { cursor: "pointer", color: "#333" },
   complete: {
     textDecoration: "line-through",
   },
 };
-export default Todo;
+export default Item;

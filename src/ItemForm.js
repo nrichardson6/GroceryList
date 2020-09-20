@@ -1,25 +1,20 @@
 import React from "react";
 
-// export default class TodoForm extends React.Component {
-class TodoForm extends React.Component {
-  state = { todoName: "" };
+class ItemForm extends React.Component {
+  state = { itemName: "" };
 
-  // hit enter, or if a submit button pressed
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.add(this.state.todoName);
     this.setState({
-      todoName: "",
+      itemName: "",
     });
 
-    // when I am i want to grab the value of the input
   };
 
-  // handleChange key pressed entering a char
   handleChange = (e) => {
-    //setState and change todoName
     this.setState({
-      todoName: e.target.value,
+      itemName: e.target.value,
     });
   };
 
@@ -27,7 +22,7 @@ class TodoForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
-          value={this.state.todoName}
+          value={this.state.itemName}
           required
           placeholder="add Item"
           onChange={this.handleChange}
@@ -37,4 +32,4 @@ class TodoForm extends React.Component {
   }
 }
 
-export default TodoForm;
+export default ItemForm;

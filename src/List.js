@@ -1,20 +1,18 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Todo from "./Todo";
+import Item from "./Item";
 
 class List extends React.Component {
-  renderTodos = () => {
-    const { todos } = this.props;
-    return todos.map((todo) => {
-      // return <div key={todo.id}>{todo.name}</div>;
+  renderItems = () => {
+    const { items } = this.props;
+    return items.map((item) => {
       return (
-        <Todo
-          todoClick={this.props.todoClick}
-          key={todo.id}
-          id={todo.id}
-          name={todo.name}
-          complete={todo.complete}
+        <Item
+          itemClick={this.props.itemClick}
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          complete={item.complete}
         />
       );
     });
@@ -22,8 +20,8 @@ class List extends React.Component {
   render() {
     return (
       <>
-        <h1>Todos</h1>
-        {this.renderTodos()}
+        <h1>Items</h1>
+        {this.renderItems()}
       </>
     );
   }
